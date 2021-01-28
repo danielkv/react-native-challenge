@@ -17,7 +17,7 @@ export default function App() {
 
     return (
         <View style={{ marginTop: insets.top, flex: 1 }}>
-            <Stack.Navigator screenOptions={topNavigatorConfig({ theme })}>
+            <Stack.Navigator screenOptions={{ ...topNavigatorConfig({ theme }) }}>
                 <Stack.Screen
                     name="route"
                     options={{

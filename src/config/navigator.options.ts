@@ -5,5 +5,9 @@ export function topNavigatorConfig({ theme }) {
             backgroundColor: theme.palette.primary,
         },
         headerTintColor: '#fff',
+        headerTitleStyle: {
+            fontSize: 20,
+            fontFamily: 'Roboto_Medium',
+        },
     };
 }
