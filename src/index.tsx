@@ -5,8 +5,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { View } from 'react-native';
 import { useTheme } from 'styled-components';
 import { topNavigatorConfig } from './config/navigator.options';
-import { Ionicons } from '@expo/vector-icons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import HeaderRight from './components/header-right';
 
 const Stack = createStackNavigator();
@@ -21,8 +19,7 @@ export default function App() {
                 <Stack.Screen
                     name="route"
                     options={{
-                        title: 'Título',
-                        headerRight: () => <HeaderRight theme={theme} onPress={() => {}} />,
+                        title: 'News',
                     }}
                     component={ListNews}
                 />

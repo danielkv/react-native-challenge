@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Typography } from '../typography';
 
 export const NewContainer = styled.TouchableOpacity`
     flex-direction: row;
@@ -25,9 +26,7 @@ type ITitleProps = {
     read: boolean;
 };
 
-export const NewTitle = styled.Text<ITitleProps>`
-    color: ${({ theme }) => theme.palette.text};
-    font-size: 16px;
+export const NewTitle = styled(Typography)<ITitleProps>`
     font-family: ${(props) => (props.read ? 'Roboto_Regular' : 'Roboto_Bold')};
 `;
 
@@ -38,13 +37,13 @@ export const NewDetailsFooter = styled.View`
     margin-top: 6px;
 `;
 
-export const NewAuthor = styled.Text`
+export const NewAuthor = styled(Typography)`
     font-size: 15px;
     color: ${({ theme }) => theme.palette.lightText};
     max-width: 150px;
 `;
 
-export const NewDate = styled.Text`
+export const NewDate = styled(Typography)`
     font-size: 14px;
     color: ${({ theme }) => theme.palette.lightText};
 `;
