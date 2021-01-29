@@ -6,6 +6,8 @@ export const LoadingContainer = styled.View`
     justify-content: center;
 `;
 
+export const LoadingIndicator = styled.View``;
+
 export const LoadingText = styled.Text`
     color: ${({ theme }) => theme.palette.primaryContrast};
     font-size: 24px;
