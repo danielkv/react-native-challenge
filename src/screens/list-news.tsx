@@ -7,6 +7,7 @@ import { useTheme } from 'styled-components';
 import { LoadingBlock } from '../components/loading-block';
 import { fetcher } from '../helpers/fetcher';
 import { NewModel } from '../models/new.model';
+import ErrorMessage from '../components/error-message';
 
 export default function ListNews() {
     const { data: newsList, isValidating } = useSWR<NewModel[]>('challenge', fetcher);
@@ -17,11 +18,15 @@ export default function ListNews() {
 
     return (
         <View style={{ flex: 1 }}>
-            <FlatList
-                data={newsList}
-                keyExtractor={(_, index) => String(index)}
-                renderItem={NewItem}
-            />
+            {Boolean(newsList && newsList.length) ? (
+                <FlatList
+                    data={newsList}
+                    keyExtractor={(_, index) => String(index)}
+                    renderItem={NewItem}
+                />
+            ) : (
+                <ErrorMessage>News were not found</ErrorMessage>
+            )}
         </View>
     );
 }

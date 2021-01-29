@@ -13,6 +13,11 @@ const themes: ITheme = {
             lightText: '#999999',
             background: '#ffffff',
         },
+        fonts: {
+            regular: 'Roboto_Regular',
+            medium: 'Roboto_Medium',
+            bold: 'Roboto_Bold',
+        },
     },
 };
 

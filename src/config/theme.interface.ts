@@ -7,6 +7,11 @@ export type ThemeType = {
         lightText: string;
         background: string;
     };
+    fonts: {
+        regular: string;
+        medium: string;
+        bold: string;
+    };
 };
 
 export interface ITheme {
