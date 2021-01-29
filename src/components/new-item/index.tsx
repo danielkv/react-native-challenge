@@ -1,7 +1,6 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { NewModel } from '../../models/new.model';
+import { Image } from 'react-native';
+import { NewScreenNavigationProps } from '../../index';
 import {
     NewAuthor,
     NewContainer,
@@ -11,20 +10,26 @@ import {
     NewImageContainer,
     NewTitle,
 } from './styles';
+import { NewModel } from '../../models/new.model';
 
 type IProps = {
     item: NewModel;
+    navigation: NewScreenNavigationProps;
 };
 
-export default function NewItem({ item }: IProps) {
+export default function NewItem({ navigation, item }: IProps) {
     return (
-        <NewContainer onPress={() => {}}>
+        <NewContainer
+            onPress={() => {
+                navigation.navigate('new', { newItem: item });
+            }}
+        >
             <NewImageContainer>
                 <Image
                     source={{
                         uri: item.image_url,
                     }}
-                    style={{ width: 100, height: 56, backgroundColor: '#0f0' }}
+                    style={{ width: 100, height: 56 }}
                 />
             </NewImageContainer>
             <NewDetailsContainer>

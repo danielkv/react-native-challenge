@@ -20,6 +20,7 @@ import { OrderType, reorderNewsList } from '../../helpers/reorder-news-list';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import HeaderRight from '../../components/header-right';
+import { NewScreenNavigationProps } from '../..';
 
 const validOrder = [
     { id: 'date', label: 'Date' },
@@ -30,7 +31,7 @@ const validOrder = [
 export default function ListNews() {
     const { data: newsList = [], isValidating } = useSWR<NewModel[]>('challenge', fetcher);
     const theme = useTheme();
-    const navigation = useNavigation();
+    const navigation = useNavigation<NewScreenNavigationProps>();
 
     const [order, setOrder] = useState<OrderType>({ field: validOrder[0].id, direction: 'ASC' });
     const [sortModalOpen, setSortModalOpen] = useState(false);
@@ -68,7 +69,7 @@ export default function ListNews() {
                 <FlatList
                     data={sortedNewsList}
                     keyExtractor={(_, index) => String(index)}
-                    renderItem={NewItem}
+                    renderItem={({ item }) => <NewItem item={item} navigation={navigation} />}
                 />
             ) : (
                 <ErrorMessage>News were not found</ErrorMessage>
