@@ -1,7 +1,8 @@
 import { createContext, Reducer } from 'react';
+import { PostRepository } from '../repository/post-repository';
 import { ActionMap, IDispatcher, CustomContext } from './reducer.types';
 
-type PostsStoreType = {
+export type PostsStoreType = {
     readPosts: string[];
 };
 
@@ -11,14 +12,26 @@ export const defaultPostStore: PostsStoreType = {
 
 type PostPayload = {
     MARK_AS_READ: string;
+    SET_READ_POSTS: string[];
 };
 type PostActions = ActionMap<PostPayload>[keyof PostPayload];
 
 const postsFn: IDispatcher<PostsStoreType> = {
     MARK_AS_READ(state, postID: string) {
+        const newReadPosts = [...state.readPosts, postID];
+
+        const postRepository = new PostRepository();
+        postRepository.save('readPosts', JSON.stringify(newReadPosts));
+
         return {
             ...state,
-            readPosts: [...state.readPosts, postID],
+            readPosts: newReadPosts,
+        };
+    },
+    SET_READ_POSTS(state, data: string[]) {
+        return {
+            ...state,
+            readPosts: data,
         };
     },
 };
