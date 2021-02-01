@@ -6,6 +6,7 @@ export const selectedTheme: string = 'light';
 const themes: ITheme = {
     light: {
         palette: {
+            error: '#a00',
             primary: '#673AB7',
             primaryContrast: '#ffffff',
             secondary: '',

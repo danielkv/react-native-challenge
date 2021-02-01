@@ -21,6 +21,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import HeaderRight from '../../components/header-right';
 import { NewScreenNavigationProps } from '../..';
+import { ErrorBlock } from '../../components/error-block';
 
 const validOrder = [
     { id: 'date', label: 'Date' },
@@ -29,7 +30,11 @@ const validOrder = [
 ];
 
 export default function ListNews() {
-    const { data: newsList = [], isValidating } = useSWR<NewModel[]>('challenge', fetcher);
+    const { data: newsList = [], isValidating, error, revalidate } = useSWR<NewModel[]>(
+        'challenge',
+        fetcher,
+    );
+
     const theme = useTheme();
     const navigation = useNavigation<NewScreenNavigationProps>();
 
@@ -60,6 +65,7 @@ export default function ListNews() {
 
     // in case it's loading data
     if (isValidating) return <LoadingBlock color={theme.palette.primary} />;
+    if (error) return <ErrorBlock label={error.message} onTryAgain={revalidate} />;
 
     const sortedNewsList = sortNewsList(newsList, order);
 

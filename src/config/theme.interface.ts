@@ -6,6 +6,7 @@ export type ThemeType = {
         text: string;
         lightText: string;
         background: string;
+        error: string;
     };
     fonts: {
         regular: string;

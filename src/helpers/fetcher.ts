@@ -10,7 +10,10 @@ export const urlBase = 'https://blog.cheesecakelabs.com/'; // challenge
  * All external requests should pass through this function
  */
 export async function fetcher(url: string, params?: ObjectLike) {
-    const response = await axios.get(`${urlBase}${url}`, { params });
-
-    return response.data;
+    try {
+        const response = await axios.get(`${urlBase}${url}`, { params });
+        return response.data;
+    } catch (err) {
+        throw new Error('An error occurred while fetching the data.');
+    }
 }
