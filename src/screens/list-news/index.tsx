@@ -85,7 +85,7 @@ export default function ListNews() {
                 onSwipeComplete={() => setSortModalOpen(false)}
             >
                 <ReorderContainer>
-                    <ReorderModalTitle>Reorder news</ReorderModalTitle>
+                    <ReorderModalTitle>Sort News</ReorderModalTitle>
                     <ReorderContentContainer>
                         {validOrder.map((currentOrder) => {
                             const selected = order.field === currentOrder.id;

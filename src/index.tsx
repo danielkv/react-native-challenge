@@ -8,6 +8,7 @@ import { topNavigatorConfig } from './config/navigator.options';
 import New from './screens/new';
 import { NewModel } from './models/new.model';
 import { RouteProp } from '@react-navigation/native';
+import IsConnected from './components/is-connected';
 
 export type RootStackParamList = {
     newsList: undefined;
@@ -30,6 +31,7 @@ export default function App() {
                 <Stack.Screen name="newsList" options={{ title: 'News' }} component={ListNews} />
                 <Stack.Screen name="new" options={{ title: 'New' }} component={New} />
             </Stack.Navigator>
+            <IsConnected />
         </View>
     );
 }
