@@ -16,6 +16,9 @@ async function loadReadPosts(): Promise<string[]> {
     return JSON.parse(readPosts);
 }
 
+/**
+ * Abstraction of StoreContext Provider
+ */
 export default function StoreProvider({ children }) {
     const [postStore, dispatcher] = useReducer(postReducer, defaultPostStore);
     const [loading, setLoading] = useState(true);

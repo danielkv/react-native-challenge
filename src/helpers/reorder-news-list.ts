@@ -7,7 +7,7 @@ export type OrderType = {
     direction: 'ASC' | 'DESC';
 };
 
-export function reorderNewsList(newsLists: NewModel[], order: OrderType): NewModel[] {
+export function sortNewsList(newsLists: NewModel[], order: OrderType): NewModel[] {
     const clonedList = _.cloneDeep(newsLists);
     let sortedList: NewModel[];
 

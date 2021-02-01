@@ -16,7 +16,7 @@ import {
     ReorderListLabel,
     ReorderModalTitle,
 } from './styles';
-import { OrderType, reorderNewsList } from '../../helpers/reorder-news-list';
+import { OrderType, sortNewsList } from '../../helpers/reorder-news-list';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import HeaderRight from '../../components/header-right';
@@ -61,7 +61,7 @@ export default function ListNews() {
     // in case it's loading data
     if (isValidating) return <LoadingBlock color={theme.palette.primary} />;
 
-    const sortedNewsList = reorderNewsList(newsList, order);
+    const sortedNewsList = sortNewsList(newsList, order);
 
     return (
         <View style={{ flex: 1 }}>
