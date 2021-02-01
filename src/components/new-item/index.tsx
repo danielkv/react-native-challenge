@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Image } from 'react-native';
 import { NewScreenNavigationProps } from '../../index';
 import {
@@ -11,6 +11,7 @@ import {
     NewTitle,
 } from './styles';
 import { NewModel } from '../../models/new.model';
+import StoreContext from '../../store/posts';
 
 type IProps = {
     item: NewModel;
@@ -18,6 +19,12 @@ type IProps = {
 };
 
 export default function NewItem({ navigation, item }: IProps) {
+    const {
+        store: { readPosts = [] },
+    } = useContext(StoreContext);
+
+    const read = Boolean(readPosts.find((readTitle) => readTitle === item.title));
+
     return (
         <NewContainer
             onPress={() => {
@@ -33,7 +40,7 @@ export default function NewItem({ navigation, item }: IProps) {
                 />
             </NewImageContainer>
             <NewDetailsContainer>
-                <NewTitle read={false}>{item.title}</NewTitle>
+                <NewTitle read={read}>{item.title}</NewTitle>
                 <NewDetailsFooter>
                     <NewAuthor>{item.authors}</NewAuthor>
                     <NewDate>{item.date}</NewDate>

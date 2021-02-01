@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import { Image } from 'react-native';
 import { NewScreenRouteProp } from '../..';
@@ -14,12 +14,22 @@ import {
     NewWebsite,
 } from './styles';
 
+import StoreContext from '../../store/posts';
+
 type IProps = {
     route: NewScreenRouteProp;
 };
 
 export default function New({ route }: IProps) {
     const newItem = route.params.newItem;
+
+    const { dispatcher } = useContext(StoreContext);
+
+    useEffect(() => {
+        if (!dispatcher || !newItem) return;
+
+        dispatcher({ type: 'MARK_AS_READ', payload: newItem.title });
+    }, [dispatcher]);
 
     return (
         <NewContainer>

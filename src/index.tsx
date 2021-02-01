@@ -5,7 +5,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { View } from 'react-native';
 import { useTheme } from 'styled-components';
 import { topNavigatorConfig } from './config/navigator.options';
-import HeaderRight from './components/header-right';
 import New from './screens/new';
 import { NewModel } from './models/new.model';
 import { RouteProp } from '@react-navigation/native';
